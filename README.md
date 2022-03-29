@@ -23,6 +23,10 @@
 * [Notas de Aula](notas/Semana_3.pdf)
 * [Atividade](atividades/Atividade_de_ED___Semana_3.pdf)
 * [Código - Algoritmos de Busca](codigos/search/search.cpp)
+* [Binary Search](https://youtu.be/E6IOrZUpvSE?t=20)
+* [Interpolation Search](https://youtu.be/DlCPTPQD6Mw?t=30)
+* [Jump Search](https://youtu.be/63kS6ZkMpkA?t=44) 
+
 
 **Aprofundamento:**
 
