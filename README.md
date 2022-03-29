@@ -10,7 +10,7 @@
 
 * [Notas de aula](notas/Notas_de_Aula___Semana_2.pdf)
 * [Atividade](atividades/Semana2.pdf)
-* [Slides](slides/02_Recursao.pdf) 
+* [Slides Prof. Atílio - Recursão](slides/02_Recursao.pdf) 
 * [Código - Hanoi](codigos/hanoi/hanoi.cpp)
 * [Código - Fofoca](codigos/fofoca/fofoca.cpp)
 * [Código - Binomial](codigos/binomial/binomial.cpp)
@@ -19,8 +19,15 @@
 
 ## Semana 3 - Análise de Algoritmos
 
-* [Slides](slides/03_An%C3%A1liseDeAlgoritmos.pdf)
-* [Aulas de Análise de Algoritmos](https://www.ime.usp.br/~pf/analise_de_algoritmos/lectures.html) 
+* [Slides Prof. Atílio - Análise de Algoritmos](slides/03_An%C3%A1liseDeAlgoritmos.pdf)
+* [Notas de Aula](notas/Semana_3.pdf)
+* [Atividade](atividades/Atividade_de_ED___Semana_3.pdf)
+* [Código - Algoritmos de Busca](codigos/search/search.cpp)
+
+**Aprofundamento:**
+
+* [Aulas de Análise de Algoritmos Prof. Paulo Feofiloff](https://www.ime.usp.br/~pf/analise_de_algoritmos/lectures.html)
+* [Minicurso de Análise de Algoritmos](extra/MinicursoAnaliseAlgortimos.pdf) 
 
 
 
