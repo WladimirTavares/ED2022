@@ -20,12 +20,14 @@
 ## Semana 3 - Análise de Algoritmos
 
 * [Slides Prof. Atílio - Análise de Algoritmos](slides/03_An%C3%A1liseDeAlgoritmos.pdf)
-* [Notas de Aula](notas/Semana_3.pdf)
+* [Notas de Aula - Comparando algoritmo](notas/Semana_3.pdf)
+* [Notas de Aula - Analisando algoritmo](notas/Semana_3%20Analisando%20algoritmos%20.pdf)
 * [Atividade](atividades/Atividade_de_ED___Semana_3.pdf)
 * [Código - Algoritmos de Busca](codigos/search/search.cpp)
-* [Binary Search](https://youtu.be/E6IOrZUpvSE?t=20)
-* [Interpolation Search](https://youtu.be/DlCPTPQD6Mw?t=30)
-* [Jump Search](https://youtu.be/63kS6ZkMpkA?t=44) 
+* [Código Python - Simulação Busca Binária ](codigos/binary_search_visualization/binary_search.py)
+* [YouTube - Visualization Binary Search](https://youtu.be/E6IOrZUpvSE?t=20)
+* [YouTube - Visualization Interpolation Search](https://youtu.be/DlCPTPQD6Mw?t=30)
+* [YouTube - Visualization Jump Search](https://youtu.be/63kS6ZkMpkA?t=44) 
 
 
 **Aprofundamento:**
