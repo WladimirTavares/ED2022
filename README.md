@@ -36,5 +36,7 @@
 * [Minicurso de Análise de Algoritmos](extra/MinicursoAnaliseAlgortimos.pdf) 
 
 
+## Semana 4 - Visão Geral Linguagem C/C++
 
+* [Visão Geral da Linguagem C/C++](codigos/revisaoC%2B%2B/README.md)
 
