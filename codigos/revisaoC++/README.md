@@ -1,4 +1,4 @@
-# Visão Geral da Linguagem C/C++
+# Revisão C/C++
 
 ## Compilação
 
@@ -1272,3 +1272,504 @@ Output:
 ```C++
 [6,12,18,24,30]
 ```
+
+## Ordenando vetores usando qsort
+
+```
+#include <iostream>
+#include <algorithm>    // std::swap
+#include <vector>
+
+using namespace std;
+
+int compara(const void *pa, const void * pb){
+    if( *(int *)pa > *(int *)pb) return 1; //a vem depois de b
+    else if( *(int *)pa < *(int *)pb) return -1; // a vem antes de b
+    else return 0; 
+
+}
+
+int compara2(const void *pa, const void * pb){
+    if( *(int *)pa > *(int *)pb) return -1; //a vem antes de b
+    else if( *(int *)pa < *(int *)pb) return 1; // a vem depois de b
+    else return 0; 
+
+}
+
+void print(int * v, int n){
+    cout << "[" << v[0];
+    for(int i = 1; i < n; i++){
+        cout << "," << v[i];
+    }
+    cout << "]" << endl;
+}
+
+/*
+void qsort (void* base, size_t num, size_t size,
+            int (*compar)(const void*,const void*));
+Sort elements of array
+Sorts the num elements of the array pointed to by base, each element size bytes long, using the compar function to determine the order.
+
+The sorting algorithm used by this function compares pairs of elements by calling the specified compar function with pointers to them as argument.
+
+The function does not return any value, but modifies the content of the array pointed to by base reordering its elements as defined by compar.
+
+The order of equivalent elements is undefined.
+*/
+
+int main(){
+
+    int v[] = {4,2,3,1,8,9,10};
+    int n = sizeof(v)/sizeof(int);
+    //ordem crescente
+    qsort(v, n, sizeof(int), compara);   
+    print(v, n);
+    //ordem decrescente
+    qsort(v, n, sizeof(int), compara2);   
+    print(v, n);
+
+
+}
+
+```
+
+Output:
+
+```
+[1,2,3,4,8,9,10]
+[10,9,8,4,3,2,1]
+```
+
+## Class
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+class Set{
+    private:
+        int * elem;
+        int size;
+        int capacity;
+    public:
+        Set(int capacity);
+        ~Set();
+        void add(int x);
+        void remove(int x);
+        int search(int x);
+        int get_size();
+        friend ostream& operator<<(ostream &output, const Set & s);        
+};
+
+Set::Set(int capacity) : capacity(capacity)
+{
+    cout << "Construtor do Set" << endl;
+    size = 0;
+    elem = new int[capacity];
+}
+
+Set::~Set()
+{
+    cout << "destrutor do Set" << endl;
+    delete [] elem;
+}
+
+int Set::search(int x)
+{
+    for(int i = 0; i < size; i++)
+    {
+        if( elem[i] == x) return i;
+    }
+    return -1;
+}
+
+void Set::add(int x){
+    if( search(x) == -1 ){
+        cout << "Adicionando " << x << endl;
+        elem[size++] = x;
+    }else{
+        cout << x << " já está no conjunto" << endl;
+    }
+
+    cout << "tamanho " << size << endl;
+}
+
+void Set::remove(int x){
+    
+    int p = search(x);
+    if( p != -1){
+        for(int i = p; i < size; i++){
+            elem[i] = elem[i+1];
+        }
+        size--;
+        cout << "removendo " << x << " do conjunto" << endl;
+    }else{
+        cout << x << " nao está no conjunto" << endl;
+    }
+    cout << "tamanho " << size << endl;
+}
+
+int Set::get_size(){
+    return size;
+}
+
+ostream& operator<<(ostream &output, const Set & s){
+    
+    if( s.size > 0 ){
+        output << "[" << s.elem[0];
+        for(int i = 1; i < s.size; i++){
+            output << "," << s.elem[i];
+        }
+        output << "]";
+    }
+
+    return output;
+}
+
+
+int main(){
+
+    Set s(10);
+
+    s.add(4);
+    s.add(3);
+    s.add(4);
+    s.add(5);
+
+    cout << s << endl;
+
+    s.remove(3);
+    cout << s << endl;
+    s.remove(2);
+    cout << s << endl;
+    s.add(7);
+    cout << s << endl;
+
+    cout << s << endl;
+}
+
+
+```
+
+## Template
+
+```C++
+#include <iostream>
+
+
+using std::cout;
+using std::endl;
+using std::ostream;
+
+template <class T>
+T max(T a, T b){
+    return a > b ? a : b;
+}
+
+class Complex{
+    private:
+        double real;
+        double complex;
+    public:    
+        Complex(double real, double complex) : real(real), complex(complex){}
+        friend ostream& operator<<(ostream &output, const Complex& c);
+        bool operator>( const Complex & rhs);  
+};
+
+bool Complex::operator>( const Complex & rhs)
+{
+    if( this->real > rhs.real )
+        return true;
+    else if( this->real < rhs.real)
+        return false;
+    else if( this->complex > rhs.complex)
+        return true;
+    else
+        return false;
+}
+
+
+ostream& operator<<(ostream &output, const Complex& c)
+{
+    output << c.real << " + " << c.complex << "i";
+
+    return output;
+}
+
+
+
+
+class Fraction{
+    private:
+        int num, den;
+        void reduce();
+        int gcd(int a, int b);
+    public:
+        Fraction(int num, int den) : num(num), den(den)
+        {
+            reduce();
+        }
+        friend ostream& operator<<(ostream &output, const Fraction& c);
+        bool operator>( const Fraction & rhs);
+
+};
+
+int Fraction::gcd(int a, int b){
+    if(b==0) return a;
+    else return gcd(b, a%b);
+}
+
+void Fraction::reduce(){
+    int g = gcd( abs(num), abs(den));
+    num /= g;
+    den /= g;
+}
+
+
+bool Fraction::operator>( const Fraction & rhs)
+{
+    return this->num*rhs.den > rhs.num* this->den;
+}
+
+
+ostream& operator<<(ostream &output, const Fraction& f)
+{
+    output << f.num << "/" << f.den;
+
+    return output;
+}
+
+
+
+
+int main(){
+
+    cout << max<int>(2,3) << endl;
+
+    cout << max<double>(2.0,5.4) << endl;
+
+    cout << Complex(3,5) << endl;
+
+    cout << Complex(3,7) << endl;
+
+    cout << max( Complex(3,5) ,Complex(3,7) ) << endl;
+
+    cout << max( Complex(3,5) ,Complex(6,7) ) << endl;
+    
+    cout << Fraction(3,12) << endl;
+
+    cout << max( Fraction(1,2) , Fraction(3,5) ) << endl;
+
+}
+
+```
+
+
+## Class Template
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+
+template <class T>
+class Set{
+    private:
+        T * elem;
+        int size;
+        int capacity;
+    public:
+        Set(int capacity);
+        ~Set();
+        void add(T x);
+        void remove(T x);
+        int search(T x);
+        int get_size();
+        friend ostream& operator<<(ostream &output, const Set & s){
+            if( s.size > 0 ){
+                output << "[" << s.elem[0];
+                for(int i = 1; i < s.size; i++){
+                    output << "," << s.elem[i];
+                }
+            output << "]";    
+            }
+            return output;
+        }
+};
+
+template <class T>
+Set<T>::Set(int capacity) : capacity(capacity)
+{
+    cout << "Construtor do Set" << endl;
+    size = 0;
+    elem = new T[capacity];
+}
+
+template <class T>
+Set<T>::~Set()
+{
+    cout << "destrutor do Set" << endl;
+    delete [] elem;
+}
+
+template <class T>
+int Set<T>::search(T x)
+{
+    for(int i = 0; i < size; i++)
+    {
+        if( elem[i] == x) return i;
+    }
+    return -1;
+}
+
+template <class T>
+void Set<T>::add(T x){
+    if( search(x) == -1 ){
+        cout << "Adicionando " << x << endl;
+        elem[size++] = x;
+    }else{
+        cout << x << " já está no conjunto" << endl;
+    }
+
+    cout << "tamanho " << size << endl;
+}
+
+template <class T>
+void Set<T>::remove(T x){
+    
+    int p = search(x);
+    if( p != -1){
+        for(int i = p; i < size; i++){
+            elem[i] = elem[i+1];
+        }
+        size--;
+        cout << "removendo " << x << " do conjunto" << endl;
+    }else{
+        cout << x << " nao está no conjunto" << endl;
+    }
+    cout << "tamanho " << size << endl;
+}
+
+template <class T>
+int Set<T>::get_size(){
+    return size;
+}
+
+   
+
+
+int main(){
+
+    Set <int> s1(10);
+    s1.add(5);
+    s1.add(7);
+    s1.add(8);
+    cout << s1 << endl;
+    
+    Set <double> s2(10);
+    s2.add(1.2);
+    s2.add(3.4);
+    s2.add(7.8);
+    cout << s2 << endl;
+    
+
+
+}
+
+```
+
+Output:
+```C++
+Construtor do Set
+Adicionando 5
+tamanho 1
+Adicionando 7
+tamanho 2
+Adicionando 8
+tamanho 3
+[5,7,8]
+Construtor do Set
+Adicionando 1.2
+tamanho 1
+Adicionando 3.4
+tamanho 2
+Adicionando 7.8
+tamanho 3
+[1.2,3.4,7.8]
+destrutor do Set
+destrutor do Set
+
+```
+
+## Contêineres
+
+* Um contêiner é um objeto que armazena uma coleção de outros objetos (seus elementos). Eles são implementados como classe template, o que permite uma grande flexibilidade nos tipos suportados como elementos.
+
+* O contêiner gerencia o espaço de armazenamento de seus elementos e fornece funções de membro para acessá-los, diretamente ou por meio de iteradores (objetos de referência com propriedades semelhantes a ponteiros).
+
+* Os contêineres replicam estruturas muito usadas em programação: vetores dinâmicos (vector), filas (queue), pilhas (stack), heaps (priority_queue), listas encadeada (list), árvores (set), vetores associativos (map).
+
+```C++
+#include <iostream>
+#include <vector>
+#include <list>
+using namespace std;
+
+template <class T>
+ostream& operator<<(ostream &output, const vector<T> & v){
+    
+    output << "[";
+    for(auto it = v.begin(); it != v.end(); it++){
+        output << *it << " ";
+    }
+    output << "]";
+
+    return output;
+}
+
+template <class T>
+ostream& operator<<(ostream &output, const list<T> & v){
+    
+    output << "[";
+    for(auto it = v.begin(); it != v.end(); it++){
+        output << *it << " ";
+    }
+    output << "]";
+
+    return output;
+}
+
+int main(){
+
+    vector <int> v;
+
+    v.push_back(5);
+    v.push_back(7);
+    v.push_back(8);
+    v.push_back(9);
+
+    cout << v << endl;
+
+    list <int> l;
+    
+    l.push_back(5);
+    l.push_front(4);
+    l.push_front(3);
+    l.push_back(7);
+
+    cout << l << endl;
+
+
+}
+```
+
+Output:
+```
+[5 7 8 9 ]
+[3 4 5 7 ]
+```
+
+
+
