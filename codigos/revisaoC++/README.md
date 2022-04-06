@@ -61,6 +61,22 @@ Hello World
 
 ## Tipos de Dados e Modificadores
 
+Tipos de dados
+
+* Tipos de dados númericos:
+    * char
+    * int
+    * long
+    * float
+    * double
+* Tipo Booleano:
+    * bool 
+
+Modificadores:
+* signed
+* unsigned
+* long
+
 ```C++
 #include <iostream>
 #include <limits.h>
@@ -129,6 +145,249 @@ limites int [ 0,4294967295]
 limites long [ 0,18446744073709551615]
 limites long double [ 3.3621e-4932,1.18973e+4932]
 ```
+
+## Variáveis
+
+Uma variável é uma abstração de uma célula de memória ou de um conjunto de células de memórias.
+
+Uma variável pode ser caracterizada por seis atributos:
+* nome
+* endereço
+* valor
+* tipo
+* tempo de vida
+* escopo
+
+## Layout da Memória
+
+![Layout da Memória](layout.gif)
+
+
+```C++
+#include <stdio.h>
+#include <stdlib.h>
+
+char c [] = "Stored in Initialized Data Segment in read-write area";
+
+const char s[] = "Stored in Initialized Data Segment in read-only area";
+
+
+
+int main(){
+
+    static int i = 11; //Initialized DSS 
+
+    static int b; // Uninitialized DSS 
+
+    int a; // memory allocating in stack 
+
+    int *v; 
+
+    v = (int*)malloc(sizeof(int)); //memory allocating in heap memory
+
+    printf("endereço c %p\n", c);
+    printf("endereço s %p\n", s);
+    printf("endereço i %p\n", &i);
+    printf("endereço b %p\n", &b);
+    printf("endereço b %p\n", &a);
+    printf("endereço v %p\n", v);
+}
+```
+
+Output:
+```
+endereço c 0x556d70380020
+endereço s 0x556d7037e020
+endereço i 0x556d70380058
+endereço b 0x556d70380060
+endereço b 0x7ffdb500629c
+endereço v 0x556d7058d2a0
+```
+
+Você pode ver o tamanho do BSS com o seguinte comando:
+
+```
+$ size main
+   text	   data	    bss	    dec	    hex	filename
+   1951	    692	     12	   2655	    a5f	main
+```
+
+Você pode consultar o arquivo .asm com o seguinte comando:
+
+```
+gcc -S layout.c -o layout.asm
+```
+
+Arquivo layout.asm
+```C++
+	.file	"layout.cpp"
+	.text
+	.globl	c
+	.data
+	.align 32
+	.type	c, @object
+	.size	c, 54
+c:
+	.string	"Stored in Initialized Data Segment in read-write area"
+	.section	.rodata
+	.align 32
+	.type	_ZL1s, @object
+	.size	_ZL1s, 53
+_ZL1s:
+	.string	"Stored in Initialized Data Segment in read-only area"
+	.data
+	.align 4
+	.type	_ZZ4mainE1i, @object
+	.size	_ZZ4mainE1i, 4
+_ZZ4mainE1i:
+	.long	11
+	.local	_ZZ4mainE1b
+	.comm	_ZZ4mainE1b,4,4
+	.section	.rodata
+.LC0:
+	.string	"endere\303\247o c %p\n"
+.LC1:
+	.string	"endere\303\247o s %p\n"
+.LC2:
+	.string	"endere\303\247o i %p\n"
+.LC3:
+	.string	"endere\303\247o b %p\n"
+.LC4:
+	.string	"endere\303\247o v %p\n"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB15:
+	.cfi_startproc
+	endbr64
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$32, %rsp
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	movl	$4, %edi
+	call	malloc@PLT
+	movq	%rax, -16(%rbp)
+	leaq	c(%rip), %rax
+	movq	%rax, %rsi
+	leaq	.LC0(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	leaq	_ZL1s(%rip), %rax
+	movq	%rax, %rsi
+	leaq	.LC1(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	leaq	_ZZ4mainE1i(%rip), %rax
+	movq	%rax, %rsi
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	leaq	_ZZ4mainE1b(%rip), %rax
+	movq	%rax, %rsi
+	leaq	.LC3(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	leaq	-20(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC3(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	movq	-16(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC4(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	movl	$0, %eax
+	movq	-8(%rbp), %rdx
+	subq	%fs:40, %rdx
+	je	.L3
+	call	__stack_chk_fail@PLT
+.L3:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE15:
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu 11.2.0-7ubuntu2) 11.2.0"
+	.section	.note.GNU-stack,"",@progbits
+	.section	.note.gnu.property,"a"
+	.align 8
+	.long	1f - 0f
+	.long	4f - 1f
+	.long	5
+0:
+	.string	"GNU"
+1:
+	.align 8
+	.long	0xc0000002
+	.long	3f - 2f
+2:
+	.long	0x3
+3:
+	.align 8
+4:
+```
+
+## Stack size
+
+```C++
+#include <sys/resource.h>
+#include <stdio.h>
+long long int tribonacci(int n){
+    if( n <= 2){
+        return 1LL;
+    }else{
+        return tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3);
+    }
+}
+
+int main(){
+
+    struct rlimit rl;
+    int result;
+    result = getrlimit(RLIMIT_STACK, &rl);
+    if (result == 0)
+    {
+        printf ("\nStack Limit = %ld\n", rl.rlim_cur);
+    }
+
+    
+    rl.rlim_cur = 512 * 1024 * 1024; // 512 Mb
+    result = setrlimit(RLIMIT_STACK, &rl);
+    if (result != 0)
+    {
+        fprintf(stderr, "setrlimit returned result = %d\n", result);
+    }
+
+    result = getrlimit(RLIMIT_STACK, &rl);
+    if (result == 0)
+    {
+        printf ("\nStack Limit = %ld\n", rl.rlim_cur);
+    }
+
+}
+
+```
+
+Output:
+```
+Stack Limit = 8388608
+Stack Limit = 536870912
+```
+
 
 ## Namespace
 
