@@ -1534,7 +1534,7 @@ Output:
 
 ## Ordenando vetores usando qsort
 
-```
+```C++
 #include <iostream>
 #include <algorithm>    // std::swap
 #include <vector>
@@ -1598,6 +1598,162 @@ Output:
 [1,2,3,4,8,9,10]
 [10,9,8,4,3,2,1]
 ```
+
+## Expressões lambda
+
+O C++ 11 introduziu as expressões lambda para nos permitir escrever uma função inline que pode ser usada para pequenos trechos de código que não serão reutilizados e não valem a pena nomear. Em sua forma mais simples, a expressão lambda pode ser definida da seguinte forma:
+
+[ cláusula de captura ] (parâmetros) -> tipo de retorno
+{
+    definição de método
+}
+
+Geralmente o tipo de retorno na expressão lambda é avaliado pelo próprio compilador e não precisamos especificar explicitamente e -> a parte do tipo de retorno pode ser ignorada, mas em alguns casos complexos, como na instrução condicional, o compilador não pode fazer o retorno tipo e precisamos especificar isso.
+
+
+```C++
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+int main()
+{
+	//função lambda
+    auto dobro = [](int x){ return 2*x; };
+
+    vector <int> v({1,2,3,4,5, 8, 4, 6, 3});
+
+    auto printVector = [](vector<int> &v){
+        cout << "[";
+        for(auto x : v){
+            cout << x <<  " ";
+        }
+        cout << "]" << endl;
+    };
+
+    printVector(v);
+
+    
+    int num_pares = count_if( v.begin(), v.end(), [](int x){ return x%2 == 0; });
+
+    cout << "num pares: " << num_pares << endl;
+
+    if( all_of(v.begin(), v.end() , [](int x){ return x%2 == 1;}) ){
+        cout << "todos são ímpares " << endl;
+    }
+
+    for_each(v.begin(), v.end(), [](int & x){ x = 3*x; });
+
+    printVector(v);
+
+    sort( v.begin(), v.end(), [](int a, int b){ return a < b; });
+
+    printVector(v);
+ 
+	
+    
+
+
+}
+```
+
+# Referência
+
+Quando uma variável é declarada como uma referência, ela se torna um nome alternativo para uma variável existente.
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int a = 5;
+    int & ra = a;
+
+    cout << ra << endl; //print 5
+
+    ra = 6;
+
+    cout << a << endl; // print 6
+
+  
+}
+```
+
+Aplicações:
+
+Passagem de parâmetro por referência:
+
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+//passagem por endereço
+void swap1(int *a, int * b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+//passagem por referência
+void swap2(int &ra, int &rb){
+    int temp = ra;
+    ra = rb;
+    rb = temp;
+}
+
+int main(){
+    int a = 5;
+    int b = 7;
+
+    swap1(&a, &b);
+
+    cout << a << " " << b << endl; //print 7 5
+
+    swap2(a, b);
+
+    cout << a << " " << b << endl;//print 5 7
+
+  
+}
+```
+
+Evitar cópias de grande estruturas:
+
+```C++
+struct Student {
+   string name;
+   string address;
+   int rollNo;
+}
+ 
+// If we remove & in below function, a new
+// copy of the student object is created.
+// We use const to avoid accidental updates
+// in the function as the purpose of the function
+// is to print s only.
+void print(const Student &s)
+{
+    cout << s.name << "  " << s.address << "  " << s.rollNo << '\n';
+}
+```
+
+Permite a modificação dos elementos com o for each
+
+```C++
+vector<int> vect{ 10, 20, 30, 40 };
+ 
+    // We can modify elements if we
+    // use reference
+    for (int &x : vect)
+    {
+        x = x + 5;
+    }
+```
+
 
 ## Class
 
@@ -2030,5 +2186,44 @@ Output:
 [3 4 5 7 ]
 ```
 
+## Vector
 
+```C++
+#include <iostream>
+#include <vector>
+
+
+using namespace std;
+
+
+int main(){
+
+    vector <int> v;
+
+    v.reserve(10);
+
+    v.push_back(4);
+    v.push_back(5);
+    
+    cout << &v[0] << endl;
+    cout << &v[1] << endl;
+
+    v.push_back(8);
+    v.push_back(9);
+    v.push_back(10);
+    v.push_back(11);
+    v.push_back(12);
+    v.push_back(15);
+    
+    cout << &v[0] << endl;
+    cout << &v[1] << endl;
+    cout << &v[2] << endl;
+    
+    
+
+
+
+}
+
+```
 

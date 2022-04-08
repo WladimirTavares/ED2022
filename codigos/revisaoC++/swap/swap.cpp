@@ -22,11 +22,11 @@ int main(){
 
     swap1(&a, &b);
 
-    cout << a << " " << b << endl;
+    cout << a << " " << b << endl; //print 7 5
 
     swap2(a, b);
 
-    cout << a << " " << b << endl;
+    cout << a << " " << b << endl;//print 5 7
 
 
 

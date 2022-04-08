@@ -13,13 +13,18 @@ int g(int x){
     return 3*x;
 }
 
+int h(int x){
+    return 4*x + 5;
+}
+
+
 /*
 Função com comportamento flexivel usando ponteiro para função
 */
 
-void map(int * v, int n, int (*f)(int)){
+void map(int * v, int n, int (*m)(int)){
     for(int i = 0; i < n; i++){
-        v[i] = f(v[i]);
+        v[i] = m(v[i]);
     }
 }
 
@@ -39,8 +44,8 @@ int main(){
     int v[] = {1,2,3,4,5};
     int n = sizeof(v)/sizeof(int);
 
-    map(v, n, f);
-    map(v, n, g);
+    map(v, n, h);
+    
     print(v, n);
 
 

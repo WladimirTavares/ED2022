@@ -39,16 +39,68 @@ The function does not return any value, but modifies the content of the array po
 The order of equivalent elements is undefined.
 */
 
+typedef struct Data{
+    int dia;
+    int mes;
+    int ano;
+
+    Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {}
+} Data;
+
+//sobrecarga operador << 
+ostream& operator<<(ostream &output, const Data & d){
+    output << d.dia << "/" << d.mes << "/" << d.ano ;
+    return output;
+}
+
+int comparaData(const void * pa, const void * pb){
+    Data a = *(Data *)pa;
+    Data b = *(Data *)pb;
+    
+    if( a.ano < b.ano ) return -1;
+    else if( a.ano > b.ano) return 1;
+    else if( a.mes < b.mes ) return -1;
+    else if( a.mes > b.mes ) return 1;
+    else if( a.dia < b.dia ) return -1;
+    else if( a.dia > b.dia ) return 1;
+    else return 0;
+
+    
+    
+    return 0;
+}
+
+
+
 int main(){
 
-    int v[] = {4,2,3,1,8,9,10};
-    int n = sizeof(v)/sizeof(int);
-    //ordem crescente
-    qsort(v, n, sizeof(int), compara);   
-    print(v, n);
-    //ordem decrescente
-    qsort(v, n, sizeof(int), compara2);   
-    print(v, n);
+    Data datas[] = { {8,2,1984}, {21,02,2002} , {20,03,2003} , {26,1,1995}, {11,9,2001}, {10,9,2001} };
+    int num = sizeof(datas)/sizeof(Data);
+
+    
+
+    for(Data x : datas){
+        cout << x << endl;
+    }
+
+    qsort(datas, num, sizeof(Data), comparaData);
+
+    cout << "Data ordenadas " << endl;
+
+    for(Data x : datas){
+        cout << x << endl;
+    }
+
+
+
+    // int v[] = {4,2,3,1,8,9,10};
+    // int n = sizeof(v)/sizeof(int);
+    // //ordem crescente
+    // qsort(v, n, sizeof(int), compara);   
+    // print(v, n);
+    // //ordem decrescente
+    // qsort(v, n, sizeof(int), compara2);   
+    // print(v, n);
 
 
 }

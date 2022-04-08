@@ -17,7 +17,7 @@ int main(){
     
     cout << v << endl;
 
-    free(v);
+    delete [] v;
    
 
     //criando um vetor de inteiros de tamanho 15 usando o operador new 
@@ -25,7 +25,7 @@ int main(){
 
     cout << v << endl;
 
-    delete [] v;
+    free(v);
     
 }
 

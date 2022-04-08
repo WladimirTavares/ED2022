@@ -87,6 +87,11 @@ int main(){
 
     Set s(10);
 
+   
+    
+
+    cout << "sizeof bytes " << sizeof(s) << endl;
+
     s.add(4);
     s.add(3);
     s.add(4);
