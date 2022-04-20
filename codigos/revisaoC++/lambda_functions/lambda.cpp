@@ -5,8 +5,12 @@ using namespace std;
 
 int main()
 {
-	//função lambda
+	int a = 6;
+
+    //função lambda
     auto dobro = [](int x){ return 2*x; };
+
+    cout << dobro(5) << endl;
 
     vector <int> v({1,2,3,4,5, 8, 4, 6, 3});
 

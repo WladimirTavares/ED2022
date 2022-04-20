@@ -1,4 +1,5 @@
 #include <iostream>
+#include <set>
 
 using namespace std;
 
@@ -87,7 +88,12 @@ int main(){
 
     Set s(10);
 
-   
+    set <int> s1;
+
+    set <double> s2;
+
+    set <set <int> > ssi;
+    
     
 
     cout << "sizeof bytes " << sizeof(s) << endl;

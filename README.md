@@ -40,3 +40,9 @@
 
 * [Visão Geral da Linguagem C/C++](codigos/revisaoC%2B%2B/README.md)
 
+## Semana 5 - Correção das Atividades 
+* [YouTube - Resolução da Atividade - Semana 1](https://www.youtube.com/watch?v=lh7GKRpr1R8)
+* [Solução Semana 1](atividades/Atividade_de_ED___Semana_1___Solu__o.pdf)
+* [YouTube - Resolução da Atividade - Semana 2](https://www.youtube.com/watch?v=mqtPZR6YFys)
+* [Solução Semana 2](atividades/Atividade_de_ED___Semana_2__Solu__o.pdf)
+* [The Four-Peg Tower of Hanoi Puzzle](extra/The%20Four-Peg%20Tower%20of%20Hanoi%20Puzzle.pdf)

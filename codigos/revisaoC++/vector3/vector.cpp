@@ -7,29 +7,21 @@ using namespace std;
 
 int main(){
 
-    vector <int> v;
+    int a, i, j;
+    int cont[4] = {0};
+    cin >> n;    
+    a = 0;
+    i = 1;
+    while( cont[0]++, i <= n){
+        j = 1;
+        while( cont[1]++, j <= n){
+            a = a + i + j;
+            j++;
+        }
+        i++;
+    }
 
-    v.reserve(10);
-
-    v.push_back(4);
-    v.push_back(5);
-    
-    cout << &v[0] << endl;
-    cout << &v[1] << endl;
-
-    v.push_back(8);
-    v.push_back(9);
-    v.push_back(10);
-    v.push_back(11);
-    v.push_back(12);
-    v.push_back(15);
-    
-    cout << &v[0] << endl;
-    cout << &v[1] << endl;
-    cout << &v[2] << endl;
-    
-    
-
+    cout << setw(10) << "n" << "Linha 3" << "Linha 5" << endl;
 
 
 }
