@@ -46,3 +46,12 @@
 * [YouTube - Resolução da Atividade - Semana 2](https://www.youtube.com/watch?v=mqtPZR6YFys)
 * [Solução Semana 2](atividades/Atividade_de_ED___Semana_2__Solu__o.pdf)
 * [The Four-Peg Tower of Hanoi Puzzle](extra/The%20Four-Peg%20Tower%20of%20Hanoi%20Puzzle.pdf)
+
+## Semana 6 - Algoritmos de Ordenação Básica
+
+* [Selection Sort](codigos/SelectionSort/selectionsort.cpp)
+* [Bubble Sort](codigos/BubbleSort/bubble_sort.cpp)
+* [Inserion Sort](codigos/InsertionSort/insertion_sort.cpp)
+* [Counting Sort](codigos/CountingSort/countingsort.cpp)
+* [Shell Sort](codigos/ShellSort/shell_sort.cpp)
+
