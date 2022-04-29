@@ -49,9 +49,11 @@
 
 ## Semana 6 - Algoritmos de Ordenação Básica
 
-* [Selection Sort](codigos/SelectionSort/selectionsort.cpp)
-* [Bubble Sort](codigos/BubbleSort/bubble_sort.cpp)
-* [Inserion Sort](codigos/InsertionSort/insertion_sort.cpp)
-* [Counting Sort](codigos/CountingSort/countingsort.cpp)
-* [Shell Sort](codigos/ShellSort/shell_sort.cpp)
+* [Atividade da Semana - Mediana](atividades/Semana6.pdf)
+* [Slides - Ordenação Básica](slides/13-Ordena%C3%A7%C3%A3oB%C3%A1sica.pdf)
+* [Código C++ - Selection Sort](codigos/SelectionSort/selectionsort.cpp)
+* [Código C++ - Bubble Sort](codigos/BubbleSort/bubble_sort.cpp)
+* [Código C++ - Inserion Sort](codigos/InsertionSort/insertion_sort.cpp)
+* [ Código C++ - Counting Sort](codigos/CountingSort/countingsort.cpp)
+* [Código C++ - Shell Sort](codigos/ShellSort/shell_sort.cpp)
 
