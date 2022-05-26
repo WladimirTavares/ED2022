@@ -73,6 +73,7 @@
 ### Semana 9 - Tipo de Dados Abstratos
 
 * [Slides - TAD](slides/04_TiposAbstratosDeDados.pdf)
+* [Nota de Aula - TAD](notas/Notas_de_Aula_Tipo%20Abstrato%20de%20Dados.pdf)
 * [Código C++ - TAD Ponto](codigos/Ponto)
 * [Código C++ - TAD Círculo](codigos/Circulo/)
 * [Código C++ - TAD Conjunto](codigos/Conjunto/)
