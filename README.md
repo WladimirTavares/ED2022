@@ -57,3 +57,13 @@
 * [ Código C++ - Counting Sort](codigos/CountingSort/countingsort.cpp)
 * [Código C++ - Shell Sort](codigos/ShellSort/shell_sort.cpp)
 
+### Semana 7 - Mergesort
+
+* [Slides - Mergesort](slides/15-Mergesort.pdf)
+* [Código C++ - Mergesort](codigos/mergesort/mergesort.cpp)
+
+### Semana 8 - Quicksort
+
+* [Slides - Quicksort](slides/17-Quicksort.pdf)
+* [Código C++ - Quicksort](codigos/quicksort/quicksort.cpp)
+* [Códigos C++ - Quickselect](codigos/quickselect/quickselect.cpp)

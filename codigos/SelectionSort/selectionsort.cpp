@@ -6,8 +6,8 @@
 
 using namespace std;
 
-template <typename T>
-void selection_sort(vector <T> & A, int p, int r){
+
+void selection_sort(vector <int> & A, int p, int r){
 
     debug(A, p, r);
 

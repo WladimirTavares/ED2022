@@ -423,7 +423,7 @@ int main(){
 
     clock_t start, end;
     
-    vector <int> data = generate(100000, 0, 1000000);
+    vector <int> data = generate(1e4, 0, 1e9);
     //vector <int> data({5,3,7,1,4,2,2,0,0,3,1});
     int n = data.size();
 
@@ -435,50 +435,27 @@ int main(){
     end = clock();
     printf ("execution time %lf seconds.\n",((double) end-start)/CLOCKS_PER_SEC);
    
-    cout << "shell_sort" << endl;
+    
+    
     vector <int> B(data);
+    cout << "selection_sort" << endl;
     start = clock();
-    shell_sort(B);
+    selection_sort(B, 0, n-1);
+    end = clock();
+    printf ("execution time %lf seconds.\n",((double) end-start)/CLOCKS_PER_SEC);
+
+        
+
+    
+
+    cout << "insertion_sort" << endl;
+    vector <int> C(data);
+    start = clock();
+    insertion_sort(C, 0, n-1);
     end = clock();
     printf ("execution time %lf seconds.\n",((double) end-start)/CLOCKS_PER_SEC);
    
-    
-
-
-
-    // vector <int> A(data);
-    // cout << "selection_sort" << endl;
-    // start = clock();
-    // selection_sort(A, 0, n-1);
-    // end = clock();
-    // printf ("execution time %lf seconds.\n",((double) end-start)/CLOCKS_PER_SEC);
-    // //for_each(A.begin(), A.end(), [](int x) { cout << x << " ";} );
-    // //cout << endl;
-    // assert( is_ordered(A, n) );
-
-        
-    
-
-
- 
-    
-
-
-    
-    
-    
-    
-
-    // cout << "insertion_sort" << endl;
-    // vector <int> C(data);
-    // start = clock();
-    // insertion_sort(C, 0, n-1);
-    // end = clock();
-    // printf ("execution time %lf seconds.\n",((double) end-start)/CLOCKS_PER_SEC);
    
-    // assert( is_ordered(C, n) );
-
-    
 
     cout << "counting_sort" << endl;
     vector <int> D(data);
@@ -487,8 +464,7 @@ int main(){
     end = clock();
     printf ("execution time %lf seconds.\n",((double) end-start)/CLOCKS_PER_SEC);
     
-    assert( is_ordered(D, n) );
-
+   
    
 
 
