@@ -60,11 +60,13 @@
 ### Semana 7 - Mergesort
 
 * [Slides - Mergesort](slides/15-Mergesort.pdf)
+* [Nota de Aula - Mergesort e Quicksort](notas/Notas_de_Aula%20-%20Mergesort%20e%20Quicksort.pdf)
 * [Código C++ - Mergesort](codigos/mergesort/mergesort.cpp)
 
 ### Semana 8 - Quicksort
 
 * [Slides - Quicksort](slides/17-Quicksort.pdf)
+* [Nota de Aula - Mergesort e Quicksort](notas/Notas_de_Aula%20-%20Mergesort%20e%20Quicksort.pdf)
 * [Código C++ - Quicksort](codigos/quicksort/quicksort.cpp)
 * [Códigos C++ - Quickselect](codigos/quickselect/quickselect.cpp)
 
@@ -75,3 +77,5 @@
 * [Código C++ - TAD Círculo](codigos/Circulo/)
 * [Código C++ - TAD Conjunto](codigos/Conjunto/)
 * [Código C++ - TAD Josephus](codigos/Josephus/)
+* [Código C++ - TAD Fração](codigos/Fraction/)
+* [Código C++ - TAD Mobile](codigos/Mobile/)
