@@ -67,3 +67,9 @@
 * [Slides - Quicksort](slides/17-Quicksort.pdf)
 * [Código C++ - Quicksort](codigos/quicksort/quicksort.cpp)
 * [Códigos C++ - Quickselect](codigos/quickselect/quickselect.cpp)
+
+### Semana 9 - Tipo de Dados Abstratos
+
+*[Slides - TAD](slides/04_TiposAbstratosDeDados.pdf)
+*[Código C++ - TAD Ponto](codigos/Ponto)
+*[Código C++ - TAD Círculo](codigos/Circulo/)
