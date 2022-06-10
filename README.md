@@ -90,4 +90,5 @@
 ### Semana 11 - Lista duplamente Encadeada
 
 * [Slides - Variação de Listas](slides/07_VariacoesListas.pdf)
-* [Atividade Laboratório](atividades/Atividade%20Semana%2011.md)
+* [Atividade Laboratório - Parte 1](atividades/Atividade%20Semana%2011.md)
+* [Atividade Laboratório - Parte 2](atividades/Atividade%20Semana%2011%20-%20parte%202.md)
