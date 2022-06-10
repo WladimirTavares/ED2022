@@ -80,3 +80,14 @@
 * [Código C++ - TAD Josephus](codigos/Josephus/)
 * [Código C++ - TAD Fração](codigos/Fraction/)
 * [Código C++ - TAD Mobile](codigos/Mobile/)
+
+
+### Semana 10 - Lista Encadeada
+
+* [Slides - Lista Encadeada](slides/06_ListasEncadeadas.pdf)
+* [Código C++ - Nó da lista encadeada](codigos/RecursionLinkedList/)
+
+### Semana 11 - Lista duplamente Encadeada
+
+* [Slides - Variação de Listas](slides/07_VariacoesListas.pdf)
+* [Atividade Laboratório](atividades/Atividade%20Semana%2011.md)
